@@ -1,4 +1,4 @@
-import React from 'react';
+
 import upvcImage1 from "../../assets/images/upvc1.jpg";
 import upvcImage2 from "../../assets/images/upvc2.jpg";
 import upvcImage3 from "../../assets/images/upvc3.jpg";
