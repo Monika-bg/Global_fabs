@@ -1,0 +1,29 @@
+.slick-arrow {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 50%;
+    color: #fff; /* Arrow color */
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  
+  .arrow-button {
+    border: none;
+    background: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .slick-prev {
+    left: 10px;
+  }
+  
+  .slick-next {
+    right: 10px;
+  }
+  

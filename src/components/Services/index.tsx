@@ -5,22 +5,22 @@ const Services = () => {
 		{
 			title: "Modern Design",
 			icon: BrushOutline,
-			desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus quasi aliquam.",
+			desc: "Embrace cutting-edge aesthetics and functionality with our meticulously crafted modern design solutions.",
 		},
 		{
 			title: "Outdoor Solutions",
 			icon: RainyOutline,
-			desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus quasi aliquam.",
+			desc: "Enhance your outdoor spaces with durable, stylish solutions designed to blend beauty and resilience.",
 		},
 		{
 			title: "Environment Friendly",
 			icon: LeafOutline,
-			desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus quasi aliquam.",
+			desc: "Commit to sustainability with our energy-efficient products that combine exceptional performance with eco-conscious design.",
 		},
 		{
 			title: "Top Quality",
 			icon: RibbonOutline,
-			desc: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusamus quasi aliquam.",
+			desc: "Experience unparalleled quality with our expertly crafted products, ensuring lasting durability and refined elegance.",
 		},
 	];
 	return (

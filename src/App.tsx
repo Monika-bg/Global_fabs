@@ -5,16 +5,18 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
 import Services from "./components/Services";
+import Contact from './components/contact';
 
 const App = () => {
 	return (
 		<div className="w-full flex flex-col">
 			<Header />
-			<Services />
+			<Intro />
 			<Collections />
 			<Explore />
-			<Intro />
 			<Banner />
+			<Services />
+			<Contact/>
 			<Footer />
 		</div>
 	);

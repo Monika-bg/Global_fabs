@@ -1,59 +1,126 @@
-import classic from "../../assets/images/classic.jpg";
-import luxury from "../../assets/images/luxury.jpg";
-import surreal from "../../assets/images/surreal.jpg";
-import bright from "../../assets/images/bright.jpg";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import './collection.css'; // Ensure this file is imported
+import Slider from 'react-slick';
+import fixedwindow from "../../assets/images/fixedwindow.jpg";
+import officepartition from "../../assets/images/officepartition.jpg";
+import openablewindow from "../../assets/images/openablewindow.jpg";
+import slidingdoor from "../../assets/images/slidingdoor.jpg";
+import slidingwindow from "../../assets/images/slidingwindow.jpg";
+import tophungwindow from "../../assets/images/tophungwindow.jpg";
+import ventilator from "../../assets/images/ventilator.jpg";
+
+// Custom arrow component for next
+const SampleNextArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <div
+      className="slick-arrow slick-next"
+      onClick={onClick}
+    >
+      <button className="arrow-button"></button>
+    </div>
+  );
+};
+
+// Custom arrow component for previous
+const SamplePrevArrow = (props) => {
+  const { onClick } = props;
+  return (
+    <div
+      className="slick-arrow slick-prev"
+      onClick={onClick}
+    >
+      <button className="arrow-button"></button>
+    </div>
+  );
+};
+
+// Slider settings
+const sliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,       // Number of slides to show at once
+  slidesToScroll: 1,     // Number of slides to scroll
+  arrows: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  pauseOnHover: true,
+  centerMode: true,      // Enable center mode to show partial slides on the edges
+  centerPadding: '0',    // No extra padding on the center
+  nextArrow: <SampleNextArrow />,
+  prevArrow: <SamplePrevArrow />
+};
 
 const Collections = () => {
-	const collectionItems = [
-		{
-			title: "Classic",
-			image: classic,
-			desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias omnis, ad modi expedita, velit aperiam dignissimos voluptas",
-		},
-		{
-			title: "Luxury",
-			image: luxury,
-			desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi quibusdam sint culpa aperiam, maiores velit, delectus iure.",
-		},
-		{
-			title: "Light , Bright",
-			image: bright,
-			desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi quibusdam sint culpa aperiam, maiores velit, delectus iure.",
-		},
-		{
-			title: "Surreal",
-			image: surreal,
-			desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi quibusdam sint culpa aperiam, maiores velit, delectus iure.",
-		},
-	];
-	return (
-		<div className="w-full lg:px-[150px] px-5 pb-8 flex lg:flex-row flex-col items-center justify-between gap-8">
-			{collectionItems.map((item, index: number) => (
-				<div
-					key={index}
-					className="w-full h-[600px] bg-center bg-cover relative p-6 cursor-pointer"
-					style={{ backgroundImage: `url(${item.image})` }}
-				>
-					<div className="w-full h-full absolute bg-black opacity-45 z-20 top-0 left-0"></div>
-					<div className="flex flex-col">
-						<div className="text-white font-semibold text-[20px] z-50">{item.title}</div>
-						<div className="text-white font-semibold text-[20px] z-50">Collection</div>
-					</div>
-					<div className="absolute bottom-6 z-50 flex flex-col gap-6">
-						<p className="text-gray-100 leading-6 text-[14px] lg:text-left text-center">
-							{item.desc}
-						</p>
-						<a
-							href="#"
-							className="text-white font-light text-[17px]"
-						>
-							Read More
-						</a>
-					</div>
-				</div>
-			))}
-		</div>
-	);
+  const collectionItems = [
+    {
+      title: "Fixed Window",
+      image: fixedwindow,
+    },
+    {
+      title: "Office Partition",
+      image: officepartition,
+    },
+    {
+      title: "Openable Window",
+      image: openablewindow,
+    },
+    {
+      title: "Sliding Window",
+      image: slidingdoor,
+    },
+    {
+      title: "Sliding Door",
+      image: slidingwindow,
+    },
+    {
+      title: "Top Hung Window",
+      image: tophungwindow,
+    },
+    {
+      title: "Ventilator",
+      image: ventilator,
+    },
+  ];
+
+  return (
+    <div id="collections" className="w-full lg:px-[150px] px-5 lg:py-10 py-8 flex flex-col items-center justify-center gap-5">
+      <div className="flex flex-col items-center">
+        <span className="text-[15px] text-[#425e85]"></span>
+        <span className="font-semibold text-[30px] text-center">
+          Our Products
+        </span>
+        <p className="mt-3 text-gray-500 text-center max-w-auto">
+        
+        Explore our diverse range of high-quality windows and doors, designed to enhance both style and functionality. From fixed and openable windows to sleek sliding doors and versatile office partitions, our products offer superior performance and modern design solutions for any space.
+        </p>
+      </div>
+      
+      <div className="w-full lg:px-auto px-5 pb-8 relative">
+        <Slider {...sliderSettings}>
+          {collectionItems.map((item, index) => (
+            <div
+              key={index}
+              className="relative flex flex-col items-center" // Flex container to center content and stack items vertically
+              style={{ margin: '0 3cm' }} // Add margin on both sides of the slides
+            >
+              <div
+                className="w-full h-[300px] bg-center bg-cover border-4 border-grey"
+                style={{ backgroundImage: `url(${item.image})` }}
+              >
+                <div className="slider background"></div>
+              </div>
+              <div className="mt-2 text-center text-black font-semibold text-[18px]">
+                {item.title}
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+    </div>
+  );
 };
 
 export default Collections;
