@@ -1,19 +1,54 @@
-
-import { IoChevronDown, IoLogoInstagram } from 'react-icons/io5';
+import { useState, useEffect } from 'react';
+import { IoChevronDown, IoLogoInstagram, IoChevronUp } from 'react-icons/io5';
 import { IoLogoGoogle } from 'react-icons/io';
-import { FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa'; // Import WhatsApp icon
+import { FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import bg from "../../assets/images/bimg.jpg";
 import logo from "../../assets/images/gflogo.jpg";
 
 const Header = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
+
   const navItems = [
     { path: "/", title: "Home" },
     { path: "#intro", title: "About Us" },
     { path: "#collections", title: "Our Products" },
     { path: "#gallery", title: "Gallery" },
-    { path: "#Banner", title: "Services" },
     { path: "#contact", title: "Contact" },
   ];
+
+  const serviceItems = [
+    { path: "/designs#upvc", title: "UPVC" },
+    { path: "/designs#pvc", title: "PVC" },
+    { path: "/designs#aluminium", title: "Aluminium" },
+  ];
+
+  const handleNavigation = (path: string) => {
+    if (path.startsWith("#")) {
+      const element = document.querySelector(path);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.location.href = path;
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) { // Adjust the scroll position as needed
+        setShowScrollToTop(true);
+      } else {
+        setShowScrollToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div
@@ -30,11 +65,40 @@ const Header = () => {
             <a
               href={item.path}
               key={item.title}
-              className="text-white no-underline font-light"
+              className="text-white no-underline font-light transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-105"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation(item.path);
+              }}
             >
               {item.title}
             </a>
           ))}
+          <div className="relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="text-white no-underline font-light flex items-center transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-105"
+            >
+              Our Services <IoChevronDown className="ml-1" />
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 bg-white rounded shadow-lg">
+                {serviceItems.map((item) => (
+                  <a
+                    href={item.path}
+                    key={item.title}
+                    className="block px-4 py-2 text-black hover:bg-gray-200 hover:text-orange-500 transition duration-300 ease-in-out"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigation(item.path);
+                    }}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <div className="flex items-center gap-5">
           <a
@@ -42,46 +106,34 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
-            className="flex items-center justify-center "
+            className="flex items-center justify-center text-white text-3xl transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-110"
           >
-            <FaWhatsapp
-              color="white"
-              className="text-3xl"
-            />
+            <FaWhatsapp />
           </a>
           <a
             href="https://www.instagram.com/global_fabricators"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="flex items-center justify-center "
+            className="flex items-center justify-center text-white text-3xl transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-110"
           >
-            <IoLogoInstagram
-              color="white"
-              className="text-3xl"
-            />
+            <IoLogoInstagram />
           </a>
           <a
             href="mailto:globalfabsblr@gmail.com"
             aria-label="Email"
-            className="flex items-center justify-center "
+            className="flex items-center justify-center text-white text-3xl transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-110"
           >
-            <FaEnvelope
-              color="white"
-              className="text-3xl"
-            />
+            <FaEnvelope />
           </a>
           <a
             href="https://www.google.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Google"
-            className="flex items-center justify-center"
+            className="flex items-center justify-center text-white text-3xl transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-110"
           >
-            <IoLogoGoogle
-              color="white"
-              className="text-3xl"
-            />
+            <IoLogoGoogle />
           </a>
           <div
             className="fixed bottom-4 left-4 bg-orange-500 rounded-full flex flex-col items-center justify-center cursor-pointer animate-bounce z-60"
@@ -91,6 +143,15 @@ const Header = () => {
             <FaPhone className="text-black text-xl font-bold mb-1" />
             <span className="text-black text-sm font-semibold">Call Us</span>
           </div>
+          {showScrollToTop && (
+        <div
+          className="fixed bottom-4 right-4 bg-black text-orange-500 rounded-full flex items-center justify-center cursor-pointer  z-60"
+          style={{ width: '60px', height: '60px' }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <IoChevronUp className="text-3xl" />
+        </div>
+      )}
         </div>
       </div>
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-55 z-20"></div>
@@ -101,9 +162,6 @@ const Header = () => {
         <p className="text-gray-300 text-[15px] text-center lg:max-w-[700px] max-w-[450px]">
           Build your home with the experts at Global Fabricators, featuring the finest UPVC, PVC, and aluminum windows and doors.
         </p>
-        {/* <button className="text-[#333] rounded-full bg-white font-medium px-5 py-3 w-fit mt-5">
-          Contact Us
-        </button> */}
       </div>
       <div className="absolute bottom-5 w-full px-[150px] z-50 flex items-center justify-center">
         <IoChevronDown
@@ -114,6 +172,7 @@ const Header = () => {
           aria-label="Scroll Down"
         />
       </div>
+      
     </div>
   );
 };

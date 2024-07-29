@@ -10,8 +10,13 @@ import slidingwindow from "../../assets/images/slidingwindow.jpg";
 import tophungwindow from "../../assets/images/tophungwindow.jpg";
 import ventilator from "../../assets/images/ventilator.jpg";
 
+// Define the type for custom arrow props
+interface ArrowProps {
+  onClick?: () => void;
+}
+
 // Custom arrow component for next
-const SampleNextArrow = (props) => {
+const SampleNextArrow: React.FC<ArrowProps> = (props) => {
   const { onClick } = props;
   return (
     <div
@@ -24,7 +29,7 @@ const SampleNextArrow = (props) => {
 };
 
 // Custom arrow component for previous
-const SamplePrevArrow = (props) => {
+const SamplePrevArrow: React.FC<ArrowProps> = (props) => {
   const { onClick } = props;
   return (
     <div
@@ -93,8 +98,7 @@ const Collections = () => {
           Our Products
         </span>
         <p className="mt-3 text-gray-500 text-center max-w-auto">
-        
-        Explore our diverse range of high-quality windows and doors, designed to enhance both style and functionality. From fixed and openable windows to sleek sliding doors and versatile office partitions, our products offer superior performance and modern design solutions for any space.
+          Explore our diverse range of high-quality windows and doors, designed to enhance both style and functionality. From fixed and openable windows to sleek sliding doors and versatile office partitions, our products offer superior performance and modern design solutions for any space.
         </p>
       </div>
       

@@ -1,10 +1,11 @@
-
+import { Link } from "react-router-dom";
 import one from "../../assets/images/one.jpg";
 import two from "../../assets/images/two.jpg";
 import three from "../../assets/images/three.jpeg";
 import four from "../../assets/images/four.jpg";
 import five from "../../assets/images/five.jpg";
 import six from "../../assets/images/six.jpeg";
+import './Explore.css';
 
 const Explore = () => {
   return (
@@ -37,9 +38,11 @@ const Explore = () => {
         <div className="w-[400px] h-[350px]">
           <img src={six} alt="Project 6" className="w-full h-full object-cover" />
         </div>
-		<button className="text-white lg:mx-0 mx-auto rounded-full bg-black font-medium px-5 py-3 w-fit mt-5 z-50">
-   Click here to view
-</button>
+        <Link to="/gal">
+    <button className="button-custom mt-5 z-50">
+        Click here to view
+    </button>
+</Link>
 
       </div>
     </div>
