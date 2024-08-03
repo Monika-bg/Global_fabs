@@ -10,15 +10,15 @@ const HeaderTop = () => {
   const navItems = [
     { path: "/", title: "Home" },
     { path: "#intro", title: "About Us" },
-    { path: "#collections", title: "Our Products" },
+    { path: "#collections", title: "Services" },
     { path: "#gallery", title: "Gallery" },
     { path: "#contact", title: "Contact" },
   ];
 
   const serviceItems = [
     { path: "/designs#upvc", title: "UPVC" },
-    { path: "/designs#pvc", title: "PVC" },
-    { path: "/designs#aluminium", title: "Aluminium" },
+    { path: "/designs#pvc", title: "Aluminium" },
+    { path: "/designs#aluminium", title: "Mosquito Mesh" },
   ];
 
   const handleNavigation = (path) => {
@@ -60,10 +60,10 @@ const HeaderTop = () => {
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             className="text-white no-underline font-light flex items-center transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-105"
           >
-            Our Services <IoChevronDown className="ml-1" />
+             Products <IoChevronDown className="ml-1" />
           </button>
           {isDropdownOpen && (
-            <div className="absolute top-full left-0 mt-2 bg-white rounded shadow-lg">
+            <div className="absolute top-full left-0 mt-2 bg-white rounded shadow-lg w-60">
               {serviceItems.map((item) => (
                 <a
                   href={item.path}
@@ -82,40 +82,37 @@ const HeaderTop = () => {
         </div>
       </div>
       <div className="flex items-center gap-5">
-        <a
-          href="https://wa.me/7848048953"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="WhatsApp"
-          className="flex items-center justify-center text-white transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-110"
-        >
-          <FaWhatsapp className="text-3xl" />
-        </a>
-        <a
-          href="https://www.instagram.com/global_fabricators"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-          className="flex items-center justify-center text-white transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-110"
-        >
-          <IoLogoInstagram className="text-3xl" />
-        </a>
-        <a
-          href="mailto:globalfabsblr@gmail.com"
-          aria-label="Email"
-          className="flex items-center justify-center text-white transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-110"
-        >
-          <FaEnvelope className="text-3xl" />
-        </a>
-        <a
-          href="https://www.google.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Google"
-          className="flex items-center justify-center text-white transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-110"
-        >
-          <IoLogoGoogle className="text-3xl" />
-        </a>
+          <a
+            href="https://wa.me/7848048953"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="flex items-center justify-center"
+          >
+            <div className="bg-gradient-to-r from-green-400 to-green-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+              <FaWhatsapp className="text-white text-2xl" />
+            </div>
+          </a>
+          <a
+            href="https://www.instagram.com/global_fabricators"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="flex items-center justify-center"
+          >
+            <div className="bg-gradient-to-r from-purple-400 to-pink-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+              <IoLogoInstagram className="text-white text-2xl" />
+            </div>
+          </a>
+          <a
+            href="mailto:globalfabsblr@gmail.com"
+            aria-label="Email"
+            className="flex items-center justify-center"
+          >
+            <div className="bg-gradient-to-r from-blue-400 to-blue-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+              <FaEnvelope className="text-white text-2xl" />
+            </div>
+          </a>
         <div
           className="fixed bottom-4 left-4 bg-orange-500 rounded-full flex flex-col items-center justify-center cursor-pointer animate-bounce z-60"
           style={{ width: '80px', height: '80px' }}

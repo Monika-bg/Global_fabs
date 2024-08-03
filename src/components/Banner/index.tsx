@@ -20,7 +20,7 @@ const Banner = () => {
               At Global Fabricators, we take pride in offering a diverse range of premium products that elevate the beauty and functionality of any space. From our energy-efficient UPVC windows and doors to the sleek and stylish aluminium alternatives, each piece is crafted with precision and care.
             </p>
             <Link to="/designs">
-              <button className="text-black bg-orange-500 border-2 border-orange-500 rounded-lg px-5 py-3 mt-5 font-medium transition-colors duration-300 ease-in-out hover:bg-gray-700 hover:text-gray-100 hover:border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500">
+              <button className="text-black bg-white -500 border-2 border-white-500 rounded-lg px-5 py-3 mt-5 font-medium transition-colors duration-300 ease-in-out hover:bg-gray-700 hover:text-gray-100 hover:border-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500">
                 Explore Our Designs
               </button>
             </Link>

@@ -10,6 +10,7 @@ import Contact from './components/contact';
 import Designs from "./components/Designs";
 import Gallery from "./components/Gallery";
 
+
 const App = () => {
 	return (
 		<Router>
@@ -17,6 +18,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={
 					<>
+					
 					<Header />
 						<Intro />
 						<Collections />

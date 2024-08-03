@@ -1,10 +1,9 @@
-
 import { FaMapMarkerAlt, FaEnvelope, FaPhone, FaWhatsapp, FaInstagram, FaClock } from 'react-icons/fa';
 import logo from "../../assets/images/gflogo.jpg"; // Update with the correct path to your logo
 
 const Contact = () => {
   return (
-    <div id="contact"className="w-full p-8 bg-[#ffffff] ">
+    <div id="contact" className="w-full p-8 bg-[#ffffff]">
       <div className="max-w-screen-lg mx-auto bg-[#f9d6a0] shadow-lg rounded-lg p-6">
         {/* Header */}
         <div className="flex items-start mb-12"> {/* Increased margin-bottom */}
@@ -19,34 +18,64 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left Column */}
           <div className="flex flex-col gap-6 mt-8"> {/* Added margin-top */}
-            <div className="flex items-center">
-              <FaPhone className="text-black text-2xl mr-4" />
-              <a href="tel:7848048953" className="text-lg text-black">+91 78480 48953</a> {/* Phone */}
+            <div className="flex items-center relative group">
+              <div className="p-3 rounded-full shadow-lg bg-gradient-to-r from-blue-400 to-blue-600 transition-transform transform group-hover:scale-110">
+                <FaPhone className="text-white text-2xl" />
+              </div>
+              <a href="tel:7848048953" className="text-lg text-black ml-4">+91 78480 48953</a> {/* Phone */}
+              <div className="absolute left-0 -top-5 ml-4 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Phone
+              </div>
             </div>
-            <div className="flex items-center">
-              <FaEnvelope className="text-black text-2xl mr-4" />
-              <a href="mailto:globalfabsblr@gmail.com" className="text-lg text-black">globalfabsblr@gmail.com</a> {/* Email */}
+            <div className="flex items-center relative group">
+              <div className="p-3 rounded-full shadow-lg bg-gradient-to-r from-blue-400 to-blue-600 transition-transform transform group-hover:scale-110">
+                <FaEnvelope className="text-white text-2xl" />
+              </div>
+              <a href="mailto:globalfabsblr@gmail.com" className="text-lg text-black ml-4">globalfabsblr@gmail.com</a> {/* Email */}
+              <div className="absolute left-0 -top-5 ml-4 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Email
+              </div>
             </div>
-            <div className="flex items-center">
-              <FaWhatsapp className="text-black text-2xl mr-4" />
-              <a href="https://wa.me/918048048953" className="text-lg text-black">Chat with us on WhatsApp</a> {/* WhatsApp */}
+            <div className="flex items-center relative group">
+              <div className="p-3 rounded-full shadow-lg bg-gradient-to-r from-green-400 to-green-600 transition-transform transform group-hover:scale-110">
+                <FaWhatsapp className="text-white text-2xl" />
+              </div>
+              <a href="https://wa.me/918048048953" className="text-lg text-black ml-4">Chat with us on WhatsApp</a> {/* WhatsApp */}
+              <div className="absolute left-0 -top-5 ml-4 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                WhatsApp
+              </div>
             </div>
-            <div className="flex items-center">
-              <FaInstagram className="text-black text-2xl mr-4" />
-              <a href="https://www.instagram.com/global_fabricators" className="text-lg text-black">global_fabricators</a> {/* Instagram */}
+            <div className="flex items-center relative group">
+              <div className="p-3 rounded-full shadow-lg bg-gradient-to-r from-purple-400 to-pink-600 transition-transform transform group-hover:scale-110">
+                <FaInstagram className="text-white text-2xl" />
+              </div>
+              <a href="https://www.instagram.com/global_fabricators" className="text-lg text-black ml-4">global_fabricators</a> {/* Instagram */}
+              <div className="absolute left-0 -top-5 ml-4 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                Instagram
+              </div>
             </div>
           </div>
 
           {/* Right Column */}
           <div className="flex flex-col gap-5">
-          <div className="flex flex-col gap-4 mt-[-3.5rem]">
-              <div className="flex items-center">
-                <FaMapMarkerAlt className="text-black text-2xl mr-4" />
-                <p className="text-lg text-black">No.5 Arasappa Layout, Agara Main Road, Thathaguni, Bengaluru - 560109</p> {/* Address */}
+            <div className="flex flex-col gap-4 mt-[-3.5rem]">
+              <div className="flex items-center relative group">
+                <div className="p-3 rounded-full shadow-lg bg-gradient-to-r from-yellow-400 to-yellow-600 transition-transform transform group-hover:scale-110">
+                  <FaMapMarkerAlt className="text-white text-2xl" />
+                </div>
+                <p className="text-lg text-black ml-4">No.5 Arasappa Layout, Agara Main Road, Thathaguni, Bengaluru - 560062</p> {/* Address */}
+                <div className="absolute left-0 -top-5 ml-4 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Location
+                </div>
               </div>
-              <div className="flex items-center">
-                <FaClock className="text-black text-2xl mr-4" />
-                <p className="text-lg text-black">9 AM to 10 PM</p> {/* Timings */}
+              <div className="flex items-center relative group">
+                <div className="p-3 rounded-full shadow-lg bg-gradient-to-r from-gray-400 to-gray-600 transition-transform transform group-hover:scale-110">
+                  <FaClock className="text-white text-2xl" />
+                </div>
+                <p className="text-lg text-black ml-4">9 AM to 8 PM</p> {/* Timings */}
+                <div className="absolute left-0 -top-5 ml-4 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Timings
+                </div>
               </div>
             </div>
 

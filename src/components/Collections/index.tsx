@@ -9,6 +9,8 @@ import slidingdoor from "../../assets/images/slidingdoor.jpg";
 import slidingwindow from "../../assets/images/slidingwindow.jpg";
 import tophungwindow from "../../assets/images/tophungwindow.jpg";
 import ventilator from "../../assets/images/ventilator.jpg";
+import sleekmesh from '../../assets/images/sleek-mesh.jpg';
+import slidmesh from '../../assets/images/sliding-mesh.jpg';
 
 // Define the type for custom arrow props
 interface ArrowProps {
@@ -61,6 +63,14 @@ const sliderSettings = {
 const Collections = () => {
   const collectionItems = [
     {
+      title: "Sleek Mesh",
+      image: sleekmesh,
+    },
+    {
+      title: "Sliding Mesh",
+      image: slidmesh,
+    },
+    {
       title: "Fixed Window",
       image: fixedwindow,
     },
@@ -95,7 +105,7 @@ const Collections = () => {
       <div className="flex flex-col items-center">
         <span className="text-[15px] text-[#425e85]"></span>
         <span className="font-semibold text-[30px] text-center">
-          Our Products
+          Products
         </span>
         <p className="mt-3 text-gray-500 text-center max-w-auto">
           Explore our diverse range of high-quality windows and doors, designed to enhance both style and functionality. From fixed and openable windows to sleek sliding doors and versatile office partitions, our products offer superior performance and modern design solutions for any space.

@@ -26,6 +26,7 @@ import image19 from '../../assets/images/19.jpg';
 import image20 from '../../assets/images/20.jpg';
 import image21 from '../../assets/images/21.jpg';
 
+
 // Add more imports for the remaining images
 
 const images = [
@@ -36,9 +37,9 @@ const Gallery = () => {
   return (
     <>
       <HeaderTop />
-      <div className="gallery-container">
+      <div className="gallery-container bg-grey-300">
         <h1 className="gallery-heading">Gallery</h1>
-        <div className="gallery-grid">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((image, index) => (
             <div key={index} className="gallery-item">
               <img src={image} alt={`Gallery Item ${index + 1}`} className="gallery-image" />
