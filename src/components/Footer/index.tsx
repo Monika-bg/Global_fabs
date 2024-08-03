@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="w-full bg-[#333333] pt-[60px] lg:px-[150px] px-8 pb-[30px] mt-[60px]">
       <div className="w-full flex lg:flex-row flex-col lg:items-start justify-between lg:gap-0 gap-8">
         {/* Left Section */}
-        <div className="flex flex-col gap-3 w-[9cm]">
+        <div className="flex flex-col gap-3 w-[6cm]">
           <span className="font-medium text-[#FFF] text-[20px] mb-2">Quick Links</span>
           <a
             href="/"

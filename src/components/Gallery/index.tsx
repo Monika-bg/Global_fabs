@@ -1,6 +1,6 @@
 
 import './gallery.css'; // Ensure this file is imported
-import HeaderTop from '../Headertop';
+import HeaderTop from '../../components/Headertop';
 import Footer from '../Footer';
 
 // Sample images - Replace with actual paths

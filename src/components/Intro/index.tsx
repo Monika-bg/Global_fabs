@@ -1,4 +1,4 @@
-import React from 'react';
+
 import logo from "../../assets/images/gflogo.jpg"; // Import your logo image
 
 const Intro = () => {

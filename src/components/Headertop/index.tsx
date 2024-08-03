@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { IoChevronDown, IoLogoInstagram } from 'react-icons/io5';
-import { IoLogoGoogle } from 'react-icons/io';
 import { FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import logo from "../../assets/images/gflogo.jpg";
 
-const HeaderTop = () => {
+const HeaderTop: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const navItems = [
@@ -21,7 +20,7 @@ const HeaderTop = () => {
     { path: "/designs#aluminium", title: "Mosquito Mesh" },
   ];
 
-  const handleNavigation = (path) => {
+  const handleNavigation = (path: string) => {
     if (path.startsWith("/")) {
       window.location.href = path;
     } else {
@@ -60,7 +59,7 @@ const HeaderTop = () => {
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             className="text-white no-underline font-light flex items-center transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-105"
           >
-             Products <IoChevronDown className="ml-1" />
+            Products <IoChevronDown className="ml-1" />
           </button>
           {isDropdownOpen && (
             <div className="absolute top-full left-0 mt-2 bg-white rounded shadow-lg w-60">
@@ -82,37 +81,37 @@ const HeaderTop = () => {
         </div>
       </div>
       <div className="flex items-center gap-5">
-          <a
-            href="https://wa.me/7848048953"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            className="flex items-center justify-center"
-          >
-            <div className="bg-gradient-to-r from-green-400 to-green-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
-              <FaWhatsapp className="text-white text-2xl" />
-            </div>
-          </a>
-          <a
-            href="https://www.instagram.com/global_fabricators"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="flex items-center justify-center"
-          >
-            <div className="bg-gradient-to-r from-purple-400 to-pink-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
-              <IoLogoInstagram className="text-white text-2xl" />
-            </div>
-          </a>
-          <a
-            href="mailto:globalfabsblr@gmail.com"
-            aria-label="Email"
-            className="flex items-center justify-center"
-          >
-            <div className="bg-gradient-to-r from-blue-400 to-blue-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
-              <FaEnvelope className="text-white text-2xl" />
-            </div>
-          </a>
+        <a
+          href="https://wa.me/7848048953"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="WhatsApp"
+          className="flex items-center justify-center"
+        >
+          <div className="bg-gradient-to-r from-green-400 to-green-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+            <FaWhatsapp className="text-white text-2xl" />
+          </div>
+        </a>
+        <a
+          href="https://www.instagram.com/global_fabricators"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          className="flex items-center justify-center"
+        >
+          <div className="bg-gradient-to-r from-purple-400 to-pink-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+            <IoLogoInstagram className="text-white text-2xl" />
+          </div>
+        </a>
+        <a
+          href="mailto:globalfabsblr@gmail.com"
+          aria-label="Email"
+          className="flex items-center justify-center"
+        >
+          <div className="bg-gradient-to-r from-blue-400 to-blue-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+            <FaEnvelope className="text-white text-2xl" />
+          </div>
+        </a>
         <div
           className="fixed bottom-4 left-4 bg-orange-500 rounded-full flex flex-col items-center justify-center cursor-pointer animate-bounce z-60"
           style={{ width: '80px', height: '80px' }}
