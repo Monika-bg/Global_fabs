@@ -1,6 +1,32 @@
 import { FaMapMarkerAlt, FaWhatsapp, FaInstagram, FaPhone, FaEnvelope, FaClock } from 'react-icons/fa';
 import logo from "../../assets/images/gflogo.jpg"; // Update with the correct path to your logo
 
+interface ContactItemProps {
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; // Type for icon component
+  text: string;
+  href?: string; // href is optional
+  label: string;
+  colors: string;
+}
+
+const ContactItem = ({ Icon, text, href, label, colors }: ContactItemProps) => (
+  <div className="flex items-center relative group">
+    <div
+      className={`p-3 rounded-full shadow-lg bg-gradient-to-r ${colors} transition-transform transform group-hover:scale-110`}
+    >
+      <Icon className="text-white text-2xl" />
+    </div>
+    {href ? (
+      <a href={href} className="text-lg text-black ml-4 break-words">{text}</a>
+    ) : (
+      <p className="text-lg text-black ml-4 break-words">{text}</p>
+    )}
+    <div className="absolute left-0 -top-5 ml-4 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      {label}
+    </div>
+  </div>
+);
+
 const Contact = () => {
   return (
     <div id="contact" className="w-full p-4 md:p-8 bg-[#ffffff]">
@@ -81,23 +107,5 @@ const Contact = () => {
     </div>
   );
 };
-
-const ContactItem = ({ Icon, text, href, label, colors }) => (
-  <div className="flex items-center relative group">
-    <div
-      className={`p-3 rounded-full shadow-lg bg-gradient-to-r ${colors} transition-transform transform group-hover:scale-110`}
-    >
-      <Icon className="text-white text-2xl" />
-    </div>
-    {href ? (
-      <a href={href} className="text-lg text-black ml-4 break-words">{text}</a>
-    ) : (
-      <p className="text-lg text-black ml-4 break-words">{text}</p>
-    )}
-    <div className="absolute left-0 -top-5 ml-4 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      {label}
-    </div>
-  </div>
-);
 
 export default Contact;
