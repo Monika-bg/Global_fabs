@@ -1,40 +1,70 @@
-/* gallery.css */
-
 /* Container for the gallery page */
 .gallery-container {
     padding: 2rem;
     margin-top: 4rem; /* Adds a gap between HeaderTop and the gallery */
+    background-color: #f9f9f9; /* Light background for contrast */
 }
 
 /* Heading styles */
 .gallery-heading {
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 2rem;
-    color: #333;
+    margin-bottom: 1.5rem;
+    color: #242b31; /* Dark grey for text */
 }
 
-/* Grid layout for gallery images */
-.gallery-grid {
+/* Responsive grid layout for gallery images */
+.grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Four images per row */
+    grid-template-columns: repeat(2, 1fr); /* Two images per row by default */
     gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /* Three images per row on medium screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr); /* Four images per row on large screens */
+    }
 }
 
 /* Style for individual gallery items */
 .gallery-item {
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 8px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
 /* Style for gallery images */
 .gallery-image {
     width: 100%;
-    height: 200px; /* Fixed height for all images */
+    height: 150px; /* Adjusted for better mobile view */
     object-fit: cover; /* Ensure images cover the container without distortion */
+    border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+    .gallery-image {
+        height: 200px; /* Larger images on medium screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    .gallery-image {
+        height: 250px; /* Even larger images on large screens */
+    }
 }

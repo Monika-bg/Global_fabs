@@ -56,7 +56,7 @@ const Header = () => {
     >
       <div className="flex items-center justify-between absolute top-5 z-50 w-full md:px-[150px] px-5">
         <div className="flex items-center">
-          <img src={logo} alt="Global Fabricators Logo" className="h-10 mr-3" />
+        <img src={logo} alt="Global Fabricators Logo" className="h-16 sm:h-20 mb-4 sm:mb-0 sm:mr-6 w-20" />
           <div className="text-white font-semibold text-[30px]">Global Fabricators</div>
         </div>
         <div className="items-center lg:flex hidden gap-5">

@@ -1,9 +1,8 @@
-
-import './gallery.css'; // Ensure this file is imported
+import './gallery.css';
 import HeaderTop from '../../components/Headertop';
 import Footer from '../Footer';
 
-// Sample images - Replace with actual paths
+
 import image1 from '../../assets/images/1.jpg';
 import image2 from '../../assets/images/2.jpg';
 import image3 from '../../assets/images/3.jpg';
@@ -26,20 +25,19 @@ import image19 from '../../assets/images/19.jpg';
 import image20 from '../../assets/images/20.jpg';
 import image21 from '../../assets/images/21.jpg';
 
-
-// Add more imports for the remaining images
-
 const images = [
-  image1, image2, image3,image4,image5,image6,image7,image8,image9,image10,image11,image12,image13,image14,image15,image16,image17,image17,image18,image19,image20,image21/* ... add all 32 image imports here */
+  image1, image2, image3, image4, image5, image6, image7, image8, image9,
+  image10, image11, image12, image13, image14, image15, image16, image17,
+  image18, image19, image20, image21,
 ];
 
 const Gallery = () => {
   return (
     <>
       <HeaderTop />
-      <div className="gallery-container bg-grey-300">
+      <div className="gallery-container mt-20"> {/* Added margin-top here */}
         <h1 className="gallery-heading">Gallery</h1>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid">
           {images.map((image, index) => (
             <div key={index} className="gallery-item">
               <img src={image} alt={`Gallery Item ${index + 1}`} className="gallery-image" />
@@ -47,7 +45,7 @@ const Gallery = () => {
           ))}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

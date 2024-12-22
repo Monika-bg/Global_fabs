@@ -1,29 +1,39 @@
+/* Updated Collection Styles */
 .slick-arrow {
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    border-radius: 50%;
-    color: #fff; /* Arrow color */
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-  }
-  
-  .arrow-button {
-    border: none;
-    background: none;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .slick-prev {
-    left: 10px;
-  }
-  
-  .slick-next {
-    right: 10px;
-  }
-  
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.arrow-button {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.slick-prev {
+  left: -15px;
+}
+
+.slick-next {
+  right: -15px;
+}
+
+.slick-dots li button:before {
+  color: gray;
+}
+
+.slick-dots li.slick-active button:before {
+  color: orange;
+}
+.slick-dots {
+  margin-top: -30; /* Adjust this value to move the dots further down */
+}
+

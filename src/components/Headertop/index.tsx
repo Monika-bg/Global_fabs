@@ -35,10 +35,17 @@ const HeaderTop: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-800 p-4 flex items-center justify-between absolute top-0 z-50 w-full">
+    <div className="bg-gray-800 p-0 flex items-center justify-between absolute top-0 z-50 w-full">
       <div className="flex items-center">
-        <img src={logo} alt="Global Fabricators Logo" className="h-10 mr-3" />
-        <div className="text-white font-semibold text-[30px]">Global Fabricators</div>
+        <img 
+          src={logo} 
+          alt="Global Fabricators Logo" 
+          className="h-12 md:h-16 lg:h-20 mr-3 w-25" 
+          style={{ objectFit: 'contain' }} 
+        />
+       <div className="text-white font-semibold text-[24px] md:text-[30px] lg:text-[35px] text-left ml-0">
+          Global Fabricators
+        </div>
       </div>
       <div className="items-center lg:flex hidden gap-5">
         {navItems.map((item) => (
@@ -113,7 +120,7 @@ const HeaderTop: React.FC = () => {
           </div>
         </a>
         <div
-          className="fixed bottom-4 left-4 bg-orange-500 rounded-full flex flex-col items-center justify-center cursor-pointer animate-bounce z-60"
+          className="fixed bottom-2 left-4 bg-orange-500 rounded-full flex flex-col items-center justify-center cursor-pointer animate-bounce z-60"
           style={{ width: '80px', height: '80px' }}
           onClick={() => window.location.href = "tel:7848048953"}
         >
