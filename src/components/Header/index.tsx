@@ -60,8 +60,8 @@ const Header = () => {
           <div className="text-white font-semibold text-[30px]">Global Fabricators</div>
         </div>
 
-        {/* Navigation Items (Always visible) */}
-        <div className="hidden lg:flex items-center gap-5">
+        {/* Always Visible Navigation Items */}
+        <div className="flex items-center gap-5">
           {navItems.map((item) => (
             <a
               href={item.path}
@@ -103,8 +103,8 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Icons (Hide on mobile, show on desktop as buttons) */}
-        <div className="hidden lg:flex items-center gap-5">
+        {/* Icons (Visible as buttons on larger screens only) */}
+        <div className="lg:flex hidden items-center gap-5">
           <a
             href="https://wa.me/7848048953"
             target="_blank"
@@ -169,7 +169,7 @@ const Header = () => {
           Crafting Quality & Style
         </div>
         <p className="text-gray-300 text-[15px] text-center lg:max-w-[700px] max-w-[450px]">
-          Build your home with the experts at Global Fabricators, featuring the finest UPVC, Aluminium windows and doors, and Mosquito Mesh.
+          {/* Build your home with the experts at Global Fabricators, featuring the finest UPVC, Aluminium windows and doors, and Mosquito Mesh. */}
         </p>
       </div>
 
