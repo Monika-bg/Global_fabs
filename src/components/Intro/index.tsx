@@ -8,7 +8,7 @@ const Intro = () => {
       className="w-full px-5 lg:px-[150px] py-8 lg:py-20 flex flex-col lg:flex-row items-center lg:items-start justify-center gap-16"
     >
       <div className="flex flex-col items-center lg:items-start">
-        <span className="font-semibold text-[30px] max-w-[350px] text-center lg:text-left lg:ml-8">
+        <span className="font-semibold text-[20px] max-w-[350px] text-center lg:text-left lg:ml-8">
           Global Fabricators
         </span>
         <span className="text-[15px] text-[#425e85] mt-2 lg:mt-4 mr-6 text-center lg:text-left">
