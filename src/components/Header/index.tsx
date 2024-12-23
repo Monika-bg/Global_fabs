@@ -1,20 +1,15 @@
-import { useState, useEffect } from "react";
-import { IoChevronDown, IoChevronUp, IoMenu, IoClose } from "react-icons/io5";
-import { FaEnvelope, FaPhone, FaWhatsapp } from "react-icons/fa";
+import { useState, useEffect } from 'react';
+import { IoChevronDown, IoLogoInstagram, IoChevronUp, IoMenu } from 'react-icons/io5'; // Added IoMenu for mobile menu
+import { FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import bg from "../../assets/images/bimg.jpg";
 import logo from "../../assets/images/gflogo.jpg";
 
-interface NavItem {
-  path: string;
-  title: string;
-}
+const Header = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu state
 
-const Header = (): JSX.Element => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  const [showScrollToTop, setShowScrollToTop] = useState<boolean>(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-
-  const navItems: NavItem[] = [
+  const navItems = [
     { path: "/", title: "Home" },
     { path: "#intro", title: "About Us" },
     { path: "#collections", title: "Services" },
@@ -22,17 +17,17 @@ const Header = (): JSX.Element => {
     { path: "#contact", title: "Contact" },
   ];
 
-  const productItems: NavItem[] = [
+  const productItems = [
     { path: "/designs#upvc", title: "UPVC" },
     { path: "/designs#aluminium", title: "Aluminium" },
     { path: "/designs#mosquito-mesh", title: "Mosquito Mesh" },
   ];
 
-  const handleNavigation = (path: string): void => {
+  const handleNavigation = (path: string) => {
     if (path.startsWith("#")) {
-      const element = document.querySelector<HTMLElement>(path);
+      const element = document.querySelector(path);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
       window.location.href = path;
@@ -40,7 +35,7 @@ const Header = (): JSX.Element => {
   };
 
   useEffect(() => {
-    const handleScroll = (): void => {
+    const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowScrollToTop(true);
       } else {
@@ -48,10 +43,10 @@ const Header = (): JSX.Element => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -60,122 +55,191 @@ const Header = (): JSX.Element => {
       className="w-full h-screen relative bg-cover bg-center flex items-center justify-center"
       style={{ backgroundImage: `url(${bg})` }}
     >
-      {/* Header */}
-      <div className="absolute top-0 left-0 w-full z-50 bg-black bg-opacity-60">
-        <div className="flex items-center justify-between px-4 md:px-10 py-4">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img
-              src={logo}
-              alt="Global Fabricators Logo"
-              className="h-12 sm:h-16 w-auto"
-            />
-            <span className="text-white font-bold text-lg sm:text-2xl ml-3">
-              Global Fabricators
-            </span>
-          </div>
+      <div className="flex items-center justify-between absolute top-5 z-50 w-full md:px-[150px] px-5">
+        <div className="flex items-center">
+          <img src={logo} alt="Global Fabricators Logo" className="h-16 sm:h-20 mb-4 sm:mb-0 sm:mr-6 w-20" />
+          <div className="text-white font-semibold text-[30px]">Global Fabricators</div>
+        </div>
 
-          {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-6">
-            {navItems.map((item) => (
-              <a
-                key={item.title}
-                href={item.path}
-                className="text-white hover:text-orange-500 transition"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavigation(item.path);
-                }}
-              >
-                {item.title}
-              </a>
-            ))}
-            <div className="relative">
-              <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="text-white hover:text-orange-500 flex items-center transition"
-              >
-                Products <IoChevronDown className="ml-1" />
-              </button>
-              {isDropdownOpen && (
-                <div className="absolute bg-white text-black shadow-lg mt-2 rounded-md">
-                  {productItems.map((item) => (
-                    <a
-                      key={item.title}
-                      href={item.path}
-                      className="block px-4 py-2 hover:bg-gray-200"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        handleNavigation(item.path);
-                      }}
-                    >
-                      {item.title}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden flex items-center">
           <button
-            className="lg:hidden text-white text-2xl"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-white p-2"
           >
-            {isMobileMenuOpen ? <IoClose /> : <IoMenu />}
+            <IoMenu className="text-2xl" />
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden bg-black bg-opacity-90 p-5">
-            {navItems.map((item) => (
-              <a
-                key={item.title}
-                href={item.path}
-                className="block text-white py-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavigation(item.path);
-                  setIsMobileMenuOpen(false);
-                }}
-              >
-                {item.title}
-              </a>
-            ))}
+        {/* Desktop Navigation */}
+        <div className="items-center lg:flex hidden gap-5">
+          {navItems.map((item) => (
+            <a
+              href={item.path}
+              key={item.title}
+              className="text-white no-underline font-light transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-105"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation(item.path);
+              }}
+            >
+              {item.title}
+            </a>
+          ))}
+
+          <div className="relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="text-white no-underline font-light flex items-center transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-105"
+            >
+              Products <IoChevronDown className="ml-1" />
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 bg-white rounded shadow-lg w-60">
+                {productItems.map((item) => (
+                  <a
+                    href={item.path}
+                    key={item.title}
+                    className="block px-4 py-2 text-black hover:bg-gray-200 hover:text-orange-500 transition duration-300 ease-in-out"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigation(item.path);
+                    }}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
-        )}
+        </div>
+
+        {/* Icons (Always visible) */}
+        <div className="flex items-center gap-5">
+          <a
+            href="https://wa.me/7848048953"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="flex items-center justify-center"
+          >
+            <div className="bg-gradient-to-r from-green-400 to-green-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+              <FaWhatsapp className="text-white text-2xl" />
+            </div>
+          </a>
+          <a
+            href="https://www.instagram.com/global_fabricators"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="flex items-center justify-center"
+          >
+            <div className="bg-gradient-to-r from-purple-400 to-pink-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+              <IoLogoInstagram className="text-white text-2xl" />
+            </div>
+          </a>
+          <a
+            href="mailto:globalfabsblr@gmail.com"
+            aria-label="Email"
+            className="flex items-center justify-center"
+          >
+            <div className="bg-gradient-to-r from-blue-400 to-blue-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+              <FaEnvelope className="text-white text-2xl" />
+            </div>
+          </a>
+
+          {/* Floating Call Button */}
+          <div
+            className="fixed bottom-4 left-4 bg-orange-500 rounded-full flex flex-col items-center justify-center cursor-pointer animate-bounce z-60"
+            style={{ width: '80px', height: '80px' }}
+            onClick={() => window.location.href = "tel:7848048953"}
+          >
+            <FaPhone className="text-black text-xl font-bold mb-1" />
+            <span className="text-black text-sm font-semibold">Call Us</span>
+          </div>
+
+          {/* Scroll to Top */}
+          {showScrollToTop && (
+            <div
+              className="fixed bottom-4 right-4 bg-gradient-to-r from-black to-gray-800 text-orange-500 rounded-full flex items-center justify-center cursor-pointer z-60 shadow-lg"
+              style={{ width: '60px', height: '60px' }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              <IoChevronUp className="text-3xl" />
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
-      <div className="text-center z-10">
-        <h1 className="text-white text-4xl md:text-6xl font-bold">
+      {/* Background Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-55 z-20"></div>
+
+      {/* Main Content */}
+      <div className="flex flex-col gap-2 items-center z-50">
+        <div className="text-white lg:text-[60px] text-[40px] font-semibold text-center">
           Crafting Quality & Style
-        </h1>
-        <p className="text-gray-300 mt-3 max-w-md mx-auto">
-          Build your home with Global Fabricators, featuring premium UPVC,
-          Aluminum windows, doors, and mosquito mesh.
+        </div>
+        <p className="text-gray-300 text-[15px] text-center lg:max-w-[700px] max-w-[450px]">
+          Build your home with the experts at Global Fabricators, featuring the finest UPVC, Aluminium windows and doors, and Mosquito Mesh.
         </p>
       </div>
 
-      {/* Social Icons */}
-      <div className="absolute bottom-4 right-4 flex space-x-3 hidden lg:flex">
-        <a
-          href="https://wa.me/7848048953"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaWhatsapp className="text-green-500 text-3xl" />
-        </a>
-        <a
-          href="https://www.instagram.com/global_fabricators"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaEnvelope className="text-blue-500 text-3xl" />
-        </a>
+      {/* Scroll Down Arrow */}
+      <div className="absolute bottom-5 w-full px-[150px] z-50 flex items-center justify-center">
+        <IoChevronDown
+          color="white"
+          width="30px"
+          height="30px"
+          className="animate-bounce"
+          aria-label="Scroll Down"
+        />
       </div>
+
+      {/* Mobile Menu (for small screens) */}
+      {isMenuOpen && (
+        <div className="lg:hidden fixed top-0 left-0 w-full h-screen bg-black bg-opacity-50 flex flex-col items-center justify-center z-50">
+          {navItems.map((item) => (
+            <a
+              href={item.path}
+              key={item.title}
+              className="text-white no-underline font-light py-2"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation(item.path);
+                setIsMenuOpen(false); // Close menu after navigation
+              }}
+            >
+              {item.title}
+            </a>
+          ))}
+          <div className="relative py-2">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="text-white no-underline font-light flex items-center"
+            >
+              Products <IoChevronDown className="ml-1" />
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 bg-white rounded shadow-lg w-60">
+                {productItems.map((item) => (
+                  <a
+                    href={item.path}
+                    key={item.title}
+                    className="block px-4 py-2 text-black hover:bg-gray-200"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigation(item.path);
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
