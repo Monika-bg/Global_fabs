@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
-import { IoChevronDown, IoLogoInstagram, IoChevronUp, IoMenu } from 'react-icons/io5'; // Added IoMenu for mobile menu
-import { FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import { useState } from 'react';
+import { IoChevronDown, IoLogoInstagram, IoMenu } from 'react-icons/io5'; // Using IoMenu for mobile menu
+import { FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import bg from "../../assets/images/bimg.jpg";
 import logo from "../../assets/images/gflogo.jpg";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [showScrollToTop, setShowScrollToTop] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu state
 
   const navItems = [
@@ -33,22 +32,6 @@ const Header = () => {
       window.location.href = path;
     }
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollToTop(true);
-      } else {
-        setShowScrollToTop(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <div
