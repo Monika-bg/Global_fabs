@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IoChevronDown, IoLogoInstagram, IoChevronUp } from 'react-icons/io5'; 
+import { IoChevronDown, IoLogoInstagram, IoChevronUp, IoMenu } from 'react-icons/io5'; // Added IoMenu for mobile menu
 import { FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import bg from "../../assets/images/bimg.jpg";
 import logo from "../../assets/images/gflogo.jpg";
@@ -7,6 +7,7 @@ import logo from "../../assets/images/gflogo.jpg";
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showScrollToTop, setShowScrollToTop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Mobile menu state
 
   const navItems = [
     { path: "/", title: "Home" },
@@ -60,8 +61,18 @@ const Header = () => {
           <div className="text-white font-semibold text-[30px]">Global Fabricators</div>
         </div>
 
-        {/* Always Visible Navigation Items */}
-        <div className="flex items-center gap-5">
+        {/* Mobile Menu Button */}
+        <div className="lg:hidden flex items-center">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-white p-2"
+          >
+            <IoMenu className="text-2xl" />
+          </button>
+        </div>
+
+        {/* Desktop Navigation */}
+        <div className="items-center lg:flex hidden gap-5">
           {navItems.map((item) => (
             <a
               href={item.path}
@@ -103,8 +114,8 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Icons (Visible as buttons on larger screens only) */}
-        <div className="lg:flex hidden items-center gap-5">
+        {/* Icons (Always visible on large screens only) */}
+        <div className="hidden lg:flex items-center gap-5">
           <a
             href="https://wa.me/7848048953"
             target="_blank"
@@ -137,52 +148,53 @@ const Header = () => {
             </div>
           </a>
         </div>
+      </div>
 
-        {/* Floating Call Button */}
-        <div
-          className="fixed bottom-4 left-4 bg-orange-500 rounded-full flex flex-col items-center justify-center cursor-pointer animate-bounce z-60"
-          style={{ width: '80px', height: '80px' }}
-          onClick={() => window.location.href = "tel:7848048953"}
-        >
-          <FaPhone className="text-black text-xl font-bold mb-1" />
-          <span className="text-black text-sm font-semibold">Call Us</span>
-        </div>
-
-        {/* Scroll to Top */}
-        {showScrollToTop && (
-          <div
-            className="fixed bottom-4 right-4 bg-gradient-to-r from-black to-gray-800 text-orange-500 rounded-full flex items-center justify-center cursor-pointer z-60 shadow-lg"
-            style={{ width: '60px', height: '60px' }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <IoChevronUp className="text-3xl" />
+      {/* Mobile Menu (for small screens) */}
+      {isMenuOpen && (
+        <div className="lg:hidden fixed top-0 left-0 w-full h-screen bg-black bg-opacity-50 flex flex-col items-center justify-center z-50">
+          {navItems.map((item) => (
+            <a
+              href={item.path}
+              key={item.title}
+              className="text-white no-underline font-light py-2"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation(item.path);
+                setIsMenuOpen(false); // Close menu after navigation
+              }}
+            >
+              {item.title}
+            </a>
+          ))}
+          <div className="relative py-2">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="text-white no-underline font-light flex items-center"
+            >
+              Products <IoChevronDown className="ml-1" />
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 bg-white rounded shadow-lg w-60">
+                {productItems.map((item) => (
+                  <a
+                    href={item.path}
+                    key={item.title}
+                    className="block px-4 py-2 text-black hover:bg-gray-200"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigation(item.path);
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
-        )}
-      </div>
-
-      {/* Background Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-55 z-20"></div>
-
-      {/* Main Content */}
-      <div className="flex flex-col gap-2 items-center z-50">
-        <div className="text-white lg:text-[60px] text-[40px] font-semibold text-center">
-          Crafting Quality & Style
         </div>
-        <p className="text-gray-300 text-[15px] text-center lg:max-w-[700px] max-w-[450px]">
-          {/* Build your home with the experts at Global Fabricators, featuring the finest UPVC, Aluminium windows and doors, and Mosquito Mesh. */}
-        </p>
-      </div>
-
-      {/* Scroll Down Arrow */}
-      <div className="absolute bottom-5 w-full px-[150px] z-50 flex items-center justify-center">
-        <IoChevronDown
-          color="white"
-          width="30px"
-          height="30px"
-          className="animate-bounce"
-          aria-label="Scroll Down"
-        />
-      </div>
+      )}
     </div>
   );
 };
