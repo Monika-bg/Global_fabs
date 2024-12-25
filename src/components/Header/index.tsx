@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react';
-import { IoChevronDown, IoLogoInstagram, IoChevronUp, IoMenu } from 'react-icons/io5';
+import { useState } from 'react';
+import { IoChevronDown, IoLogoInstagram } from 'react-icons/io5';  // Removed unused imports
 import { FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import bg from "../../assets/images/bimg.jpg";
 import logo from "../../assets/images/gflogo.jpg";
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [showScrollToTop, setShowScrollToTop] = useState(false);
+  // const [ setShowScrollToTop] = useState(false);
 
   const navItems = [
     { path: "/", title: "Home" },
-    { path: "#intro", title: "About Us" },
+    { path: "#intro", title: "About" },
     { path: "#collections", title: "Services" },
     { path: "#gallery", title: "Gallery" },
     { path: "#contact", title: "Contact" },
@@ -33,21 +33,21 @@ const Header = () => {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollToTop(true);
-      } else {
-        setShowScrollToTop(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 300) {
+  //       setShowScrollToTop(true);
+  //     } else {
+  //       setShowScrollToTop(false);
+  //     }
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   return (
     <div
@@ -56,17 +56,19 @@ const Header = () => {
     >
       <div className="flex items-center justify-between absolute top-5 z-50 w-full px-5 md:px-[150px]">
         {/* Brand Section (Logo and Text) */}
-        <div className="flex items-center space-x-4 md:space-x-6">
+        <div className="flex flex-col sm:flex-row items-center sm:space-x-3 space-y-2 sm:space-y-0 ml-[-0.9cm]">
           <img
             src={logo}
             alt="Global Fabricators Logo"
-            className="h-12 sm:h-16 mb-4 sm:mb-0 w-16"
+            className="h-12 sm:h-16 w-16"
           />
-          <div className="text-white font-semibold text-[18px] sm:text-[28px]">Global Fabricators</div>
+          <div className="text-white font-semibold text-[20px] sm:text-[30px] text-center sm:text-left">
+            Global Fabricators
+          </div>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-5">
           {navItems.map((item) => (
             <a
               href={item.path}
@@ -108,22 +110,44 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Social Media Icons (Visible Only on Large Screens) */}
-        <div className="hidden lg:flex items-center gap-5">
-          <a href="https://www.instagram.com/global_fabricators/" target="_blank" rel="noopener noreferrer">
-            <IoLogoInstagram className="text-white text-2xl hover:text-orange-500" />
+        {/* Icons (Hidden on small screens, visible on larger screens) */}
+        <div className="flex items-center gap-5 hidden lg:flex">
+          <a
+            href="https://wa.me/7848048953"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+            className="flex items-center justify-center"
+          >
+            <div className="bg-gradient-to-r from-green-400 to-green-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+              <FaWhatsapp className="text-white text-2xl" />
+            </div>
           </a>
-          <a href="https://wa.me/7676886843" target="_blank" rel="noopener noreferrer">
-            <FaWhatsapp className="text-white text-2xl hover:text-orange-500" />
+          <a
+            href="https://www.instagram.com/global_fabricators"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="flex items-center justify-center"
+          >
+            <div className="bg-gradient-to-r from-purple-400 to-pink-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+              <IoLogoInstagram className="text-white text-2xl" />
+            </div>
           </a>
-          <a href="mailto:info@globalfabricators.com" target="_blank" rel="noopener noreferrer">
-            <FaEnvelope className="text-white text-2xl hover:text-orange-500" />
+          <a
+            href="mailto:globalfabsblr@gmail.com"
+            aria-label="Email"
+            className="flex items-center justify-center"
+          >
+            <div className="bg-gradient-to-r from-blue-400 to-blue-600 p-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300">
+              <FaEnvelope className="text-white text-2xl" />
+            </div>
           </a>
         </div>
 
         {/* Mobile Navigation Menu (for smaller screens) */}
         <div className="lg:hidden flex items-center justify-between w-full">
-          <div className="flex items-center gap-4 sm:gap-6">
+          <div className="flex items-center gap-5">
             {navItems.map((item) => (
               <a
                 href={item.path}
@@ -138,14 +162,31 @@ const Header = () => {
               </a>
             ))}
           </div>
-
-          {/* Mobile Menu Icon (only visible on small screens) */}
-          <button
-            className="text-white lg:hidden block"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          >
-            <IoMenu className="text-2xl" />
-          </button>
+          <div className="relative">
+            <button
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="text-white no-underline font-light flex items-center transition duration-300 ease-in-out transform hover:text-orange-500 hover:scale-105"
+            >
+              Products <IoChevronDown className="ml-1" />
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 bg-white rounded shadow-lg w-60">
+                {productItems.map((item) => (
+                  <a
+                    href={item.path}
+                    key={item.title}
+                    className="block px-4 py-2 text-black hover:bg-gray-200 hover:text-orange-500 transition duration-300 ease-in-out"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavigation(item.path);
+                    }}
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
